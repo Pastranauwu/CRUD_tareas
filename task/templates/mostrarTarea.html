@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{% block content %}
+
+
+
+<h1>{{task.title}}</h1>
+
+{{error}}
+<form action="" , method="POST">
+    {% csrf_token %} {{form.as_p}}
+    <button>
+        update
+    </button>
+</form>
+{% if task.decompleted == None %}
+<form action="{% url 'complete_task' task.id %}" method="POST">
+    {% csrf_token %}
+    <button>
+        complete
+    </button>
+</form>
+{% endif %}
+
+<form action="{% url 'delated_task' task.id %}" method="POST">
+    {% csrf_token %}
+    <button>
+        Delated
+    </button>
+</form>
+
+
+{% endblock %}

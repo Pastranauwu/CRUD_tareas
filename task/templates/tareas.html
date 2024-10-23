@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Tareas</h1>
+
+
+
+<ul>
+    {% for tarea in task %}
+    <li>
+        <a href="{% url 'task_detail' tarea.id %}">
+            {% if tarea.important %}
+            <font color="#DE6766">
+                <h2> {{tarea.title}} </h2>
+            </font>
+            {% else %}
+            <font color="#55b6c2">
+                <h2> {{tarea.title}} </h2>
+            </font>
+            {% endif %}
+            <h4>Descripcion</h4>
+            <p>{{tarea.description}}</p>
+            <h4>Creado</h4>
+            <p>{{tarea.created}}</p>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+<form action="/task/create/">
+    <button>Crear tarea</button>
+</form>
+
+
+{% endblock %}
