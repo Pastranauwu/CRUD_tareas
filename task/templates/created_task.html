@@ -1,14 +1,25 @@
 {% extends 'base.html'%}
 {% block content %}
 
+<h1>Creación de Tareas</h1>
 
+{% if error %}
+<p style="color: #DE6766; text-align: center;">{{ error }}</p>
+{% endif %}
 
-<h1>Creaion de tareas</h1>
-{{error}}
-<form action="/task/create/" , method="POST">
-    {%csrf_token%} {{form.as_p}}
-    <button>
-        Created
+<form action="/task/create/" method="POST"
+    style="display: flex; flex-direction: column; align-items: center; max-width: 600px; margin: 0 auto;">
+    {% csrf_token %}
+
+    <!-- Formulario con estilos personalizados -->
+    <div style="width: 100%;">
+        {{ form.as_p }}
+    </div>
+
+    <button type="submit"
+        style="background-color: #55b6c2; color: #fff; border: none; padding: 12px 20px; font-size: 16px; cursor: pointer; border-radius: 5px; margin-top: 20px; transition: background-color 0.3s ease;">
+        Crear Tarea
     </button>
 </form>
+
 {% endblock %}

@@ -16,14 +16,15 @@
         }
 
         body {
-            max-width: 100%;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: #2b2b2b;
+            color: #ffffff;
         }
 
         nav {
-            background-color: #333;
+            background-color: #444;
             padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         nav ul {
@@ -39,31 +40,40 @@
         }
 
         nav ul li a {
-            color: rgb(221, 94, 94);
+            color: #ffffff;
             text-decoration: none;
-            font-size: 16px;
-            transition: color 0.3s ease;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
         }
 
         nav ul li a:hover {
-            color: #55b6c2;
+            background-color: #555;
+            color: #ffffff;
+            border-radius: 5px;
         }
 
-        /* Content block */
+        /* Container styles */
         .container {
             flex: 1;
-            width: 600px;
+            width: 80%;
+            max-width: 1200px;
             margin: 30px auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            padding: 30px;
+            background-color: #333;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
         }
 
         h1 {
-            color: #333;
+            color: #f0f0f0;
             text-align: center;
-            margin-bottom: 20px;
+            font-size: 36px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         ul {
@@ -73,30 +83,69 @@
 
         ul li {
             margin-bottom: 20px;
-            padding: 10px;
-            background-color: #f4f4f9;
-            border: 1px solid #ccc;
+            padding: 15px;
+            background-color: #444;
+            border: 1px solid #555;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        ul li:hover {
+            background-color: #555;
+        }
+
+        a {
+            color: #f0f0f0;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Button styles */
+        button {
+            background-color: #55b6c2;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
             border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #449ca6;
         }
 
         /* Footer styles */
         footer {
             text-align: center;
-            padding: 10px;
-            background-color: #333;
-            color: white;
+            padding: 20px;
+            background-color: #444;
+            color: #ffffff;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+            font-size: 14px;
         }
 
         .centered-text {
-        text-align: center;
-    }
+            text-align: center;
+        }
 
-    /* Bordes redondeados para la imagen */
-    .rounded-image {
-        display: block; /* Para asegurar que la imagen pueda centrarse si se requiere */
-        margin: 0 auto; /* Para centrar la imagen */
-        border-radius: 15px; /* Ajusta el valor para más o menos redondeo */
-    }
+        /* Rounded image */
+        .rounded-image {
+            display: block;
+            margin: 20px auto;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 600px;
+            transition: transform 0.3s ease;
+        }
+
+        .rounded-image:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 

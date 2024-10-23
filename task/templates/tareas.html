@@ -1,34 +1,33 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
 
-<h1>Tareas</h1>
+{% block content %}
 
+<h1 class="page-title">Tareas</h1>
 
-
-<ul>
+<ul class="task-list">
     {% for tarea in task %}
-    <li>
-        <a href="{% url 'task_detail' tarea.id %}">
+    <li class="task-item">
+        <a href="{% url 'task_detail' tarea.id %}" class="task-link">
             {% if tarea.important %}
-            <font color="#DE6766">
-                <h2> {{tarea.title}} </h2>
-            </font>
+            <h2 class="task-title important">{{tarea.title}}</h2>
             {% else %}
-            <font color="#55b6c2">
-                <h2> {{tarea.title}} </h2>
-            </font>
+            <h2 class="task-title normal">{{tarea.title}}</h2>
             {% endif %}
-            <h4>Descripcion</h4>
-            <p>{{tarea.description}}</p>
-            <h4>Creado</h4>
-            <p>{{tarea.created}}</p>
+            <div class="task-details">
+                <h4>Descripción</h4>
+                <p>{{tarea.description}}</p>
+                <h4>Creado</h4>
+                <p>{{tarea.created}}</p>
+            </div>
         </a>
     </li>
     {% endfor %}
 </ul>
 
-<form action="/task/create/">
-    <button>Crear tarea</button>
-</form>
-
+<div class="create-task">
+    <form action="/task/create/">
+        <button class="btn-create">Crear tarea</button>
+    </form>
+</div>
 
 {% endblock %}

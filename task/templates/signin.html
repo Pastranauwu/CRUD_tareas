@@ -1,15 +1,25 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% block content %}
 
+<h1 style="text-align: center; color: #333; margin-bottom: 20px;">SIGN IN</h1>
 
-<h1>SIGNIN</h1>
-{{error}}
-<form action="/signin/" method="POST">
-    {%csrf_token%}
+<!-- Mostrar errores si existen -->
+{% if error %}
+<p style="color: red; text-align: center;">{{error}}</p>
+{% endif %}
+
+<!-- Formulario de inicio de sesión -->
+<form action="/signin/" method="POST"
+    style="max-width: 400px; margin: 0 auto; background-color: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    {% csrf_token %}
     {{form.as_p}}
-    <button>
-        Entrar
-    </button>
+
+    <div style="text-align: center;">
+        <button
+            style="background-color: #555; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 10px;">
+            Entrar
+        </button>
+    </div>
 </form>
 
 {% endblock %}
