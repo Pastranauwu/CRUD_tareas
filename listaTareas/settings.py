@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'listaTareas.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default= dj_database_url.config(default='postgresql://postgres:postgres@localhost/postgres',conn_max_age=600)
+        default = 'postgresql://postgres:postgres@localhost/postgres',conn_max_age=600
     )
 }
 
