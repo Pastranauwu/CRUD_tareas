@@ -101,7 +101,8 @@ def signup(request):
 def task(request):
     # llamamos a todas las tareas guardadas y filtradas
     tareas = Task.objects.filter(user=request.user, decompleted__isnull = True)
-    return render(request, "tareas.html", {'task': tareas})
+    title = True
+    return render(request, "tareas.html", {'task': tareas, 'title1': title})
 
 
 def home(request):
