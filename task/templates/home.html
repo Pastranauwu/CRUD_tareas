@@ -4,7 +4,7 @@
 <h1 style="text-align: center; color: #ffffff;">HOME</h1>
 
 {% if user.is_authenticated %}
-<p class="centered-text" style="font-size: 18px; color: #b6b4b4;">¡BIENVENIDO! {{user.name}} </p>
+<p class="centered-text" style="font-size: 18px; color: #b6b4b4;">¡BIENVENIDO! {{user.username}} </p>
 {% else %}
 <p class="centered-text" style="font-size: 18px; color: #b6b4b4;">¡BIENVENIDO!  registrate </p>
 {% endif %}
