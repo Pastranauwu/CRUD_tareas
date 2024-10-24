@@ -2,8 +2,11 @@
 
 {% block content %}
 
+{% if task.decompleted == None %}
 <h1 class="page-title">Tareas</h1>
-
+{% else %}
+<h1 class="page-title">Tareas Completadas</h1>
+{% endif %}
 <ul class="task-list">
     {% for tarea in task %}
     <li class="task-item">
@@ -24,9 +27,11 @@
     {% endfor %}
 </ul>
 
-<div class="create-task">
+<div class="create-task"> 
     <form action="/task/create/">
-        <button class="btn-create">Crear tarea</button>
+        <div style="text-align: center;"> 
+            <button class="btn-create">Crear tarea</button>
+        </div>
     </form>
 </div>
 
