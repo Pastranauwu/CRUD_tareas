@@ -1,24 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 style="text-align: center; color: #333; margin-bottom: 20px;">SIGN UP</h1>
+<h1 class="form-title">SIGN UP</h1>
 
 <!-- Mostrar errores si existen -->
 {% if error %}
-<p style="color: red; text-align: center;">{{error}}</p>
+<p class="form-error">{{ error }}</p>
 {% endif %}
 
 <!-- Formulario de registro -->
-<form action="/signup/" method="POST"
-    style="max-width: 400px; margin: 0 auto; background-color: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+<form action="/signup/" method="POST" class="form-container">
     {% csrf_token %}
-    {{form.as_p}}
+    {{ form}}
 
-    <div style="text-align: center;">
-        <button
-            style="background-color: #555; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 10px;">
-            Signup
-        </button>
+    <div>
+        <button type="submit" class="form-button">Signup</button>
     </div>
 </form>
 
