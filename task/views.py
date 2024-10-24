@@ -106,7 +106,7 @@ def task(request):
 
 
 def home(request):
-    return render(request, "home.html")
+    return render(request, "home.html", {})
 
 
 def cerrarSesion(request):
