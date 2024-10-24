@@ -1,21 +1,23 @@
 {% extends 'base.html' %}
+
 {% block content %}
-
-<h1 class="form-title">SIGN UP</h1>
-
-<!-- Mostrar errores si existen -->
-{% if error %}
-<p class="form-error">{{ error }}</p>
-{% endif %}
-
-<!-- Formulario de registro -->
-<form action="/signup/" method="POST" class="form-container">
-    {% csrf_token %}
-    {{ form }}
-
-    <div>
-        <button type="submit" class="form-button">Signup</button>
-    </div>
-</form>
-
+<div class="container mt-5">
+    <h1 class="text-center">Signup</h1>
+    <form method="post" class="border p-4 rounded shadow-sm">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+</div>
 {% endblock %}
