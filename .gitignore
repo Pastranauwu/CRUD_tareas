@@ -1,3 +1,6 @@
 db.sqlite3
 venv
 __pycache__
+staticfiles
+task/__pycache__
+listaTareas/__pycache__

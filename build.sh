@@ -16,3 +16,5 @@ python manage.py migrate
 # then
 #   python manage.py createsuperuser --no-input
 # fi
+
+source /venv/bin/activate & python manage.py runserver 0.0.0.0:8000

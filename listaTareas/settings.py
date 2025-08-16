@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import os 
+import os
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,9 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = DEBUG = 'RENDER' not in os.environ
+# If running on Render (env var RENDER present), DEBUG will be False by default.
+DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = []
+# Allow local development hosts by default, and append Render external hostname if present.
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0"]
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -76,15 +78,19 @@ WSGI_APPLICATION = 'listaTareas.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# Database documentation https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-DATABASES = {
-    'default': dj_database_url.config(
-        default = 'postgresql://postgres:postgres@localhost/postgres',conn_max_age=600
-    )
-}
+# Use DATABASE_URL when present (e.g., production). Otherwise, default to SQLite for local dev.
+DATABASE_URL = os.environ.get("DATABASE_URL")
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600)
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
@@ -122,11 +128,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+# Always define STATIC_ROOT so `collectstatic` can run in any environment.
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 if not DEBUG:
-    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
-    # and renames the files with unique names for each version to support long-term caching
+    # Enable the WhiteNoise storage backend in production for efficient static serving.
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #ayuda al manejo de rutas y que no se permita el acceso sin antes logiar
